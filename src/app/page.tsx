@@ -91,14 +91,14 @@ export default function Home() {
               />
             <span className="text-2xl font-semibold tracking-tight">Fuck Plagiarism</span>
           </div>
-          <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-500">By using this tool, you agree to the <a href="/terms" className="text-violet-600 hover:underline">Terms of Service</a> and <a href="/privacy" className="text-violet-600 hover:underline">Privacy Policy</a></span>
+          <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-500">By using this tool, you agree to the <a href="/terms" className="text-violet-600 hover:underline">Terms of Service</a></span>
         </header>
 
         <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center py-12">
           <div className="mb-9 text-center">
-            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-violet-600">Invisible text utility</p>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-violet-600">Plagiarism remover</p>
             <h1 className="text-4xl font-bold tracking-[-0.04em] text-slate-950 sm:text-6xl">Make words <span className="text-violet-600">unseen.</span></h1>
-            <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-slate-500">Add invisible characters to your text, then copy it anywhere. Nothing is uploaded or stored.</p>
+            <p className="mx-auto mt-5 max-w-lg text-base leading-7 text-slate-500">Remove plagiarism from your text, Turn your ai generated text original. Nothing is uploaded or stored.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="grid gap-4">
