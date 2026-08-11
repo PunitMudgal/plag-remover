@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 const INVISIBLE_MARKER = "\u200C\u200C";
@@ -79,11 +80,18 @@ export default function Home() {
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-8 sm:px-8 lg:px-12">
         <header className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="grid size-10 place-items-center rounded-2xl bg-slate-950 text-lg text-white shadow-lg shadow-slate-950/15">✦</div>
-            <span className="text-sm font-semibold tracking-tight">Veiltext</span>
+          <div className="flex items-center">
+              <Image
+                src="/logo.png"
+                alt="Fuck Plagiarism logo"
+                width={60}
+                height={60}
+                priority
+                className="size-14 object-contain"
+              />
+            <span className="text-2xl font-semibold tracking-tight">Fuck Plagiarism</span>
           </div>
-          <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-500">Private by design</span>
+          <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-500">By using this tool, you agree to the <a href="/terms" className="text-violet-600 hover:underline">Terms of Service</a> and <a href="/privacy" className="text-violet-600 hover:underline">Privacy Policy</a></span>
         </header>
 
         <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center py-12">
