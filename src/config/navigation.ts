@@ -28,7 +28,7 @@ export type NavLink = (typeof NAV_LINKS)[number];
 export const TOOLS = [
   {
     label: "Plagiarism Remover",
-    href: "/tools/plagiarism-remover",
+    href: "/plagiarism-remover",
     description: "Rewrite flagged content into fresh, fully original text.",
     icon: AiEraserIcon,
     iconClass: "bg-emerald-50 text-emerald-600",
@@ -36,7 +36,7 @@ export const TOOLS = [
   },
   {
     label: "Plagiarism Checker",
-    href: "/tools/plagiarism-checker",
+    href: "/plagiarism-checker",
     description: "Scan your text against billions of sources in seconds.",
     icon: AiScanIcon,
     iconClass: "bg-rose-50 text-rose-600",
@@ -44,7 +44,7 @@ export const TOOLS = [
   },
   {
     label: "AI to Human Converter",
-    href: "/tools/ai-to-human-text-converter",
+    href: "/ai-to-human-text-converter",
     description: "Turn robotic AI writing into natural, human-sounding text.",
     icon: AiUserIcon,
     iconClass: "bg-violet-50 text-violet-600",
@@ -52,7 +52,7 @@ export const TOOLS = [
   },
   {
     label: "Text Paraphraser",
-    href: "/tools/text-paraphraser",
+    href: "/text-paraphraser",
     description: "Rephrase sentences while keeping the exact meaning intact.",
     icon: QuillWrite01Icon,
     iconClass: "bg-amber-50 text-amber-600",
