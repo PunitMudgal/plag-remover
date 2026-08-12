@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useEffect, useMemo, useState } from "react";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 
 const INVISIBLE_MARKER = "\u200C\u200C";
@@ -79,22 +78,7 @@ export default function Home() {
       <div className="pointer-events-none absolute -bottom-48 -right-24 size-120 rounded-full bg-sky-200/50 blur-3xl" />
 
       <div className="relative mx-auto flex min-h-screen w-full max-w-6xl flex-col px-5 py-8 sm:px-8 lg:px-12">
-        <header className="flex items-center justify-between">
-          <div className="flex items-center">
-              <Image
-                src="/logo.png"
-                alt="Fuck Plagiarism logo"
-                width={60}
-                height={60}
-                priority
-                className="size-14 object-contain"
-              />
-            <span className="text-2xl font-semibold tracking-tight">Fuck Plagiarism</span>
-          </div>
-          <span className="rounded-full border border-slate-200 bg-white/70 px-3 py-1 text-xs font-medium text-slate-500">By using this tool, you agree to the <a href="/terms" className="text-violet-600 hover:underline">Terms of Service</a></span>
-        </header>
-
-        <section className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center py-12">
+        <section id="tool" className="mx-auto flex w-full max-w-3xl flex-1 flex-col justify-center py-12">
           <div className="mb-9 text-center">
             <p className="mb-4 text-xs font-bold uppercase tracking-[0.22em] text-violet-600">Plagiarism remover</p>
             <h1 className="text-4xl font-bold tracking-[-0.04em] text-slate-950 sm:text-6xl">Make words <span className="text-violet-600">unseen.</span></h1>
