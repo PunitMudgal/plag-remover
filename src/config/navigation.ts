@@ -7,7 +7,7 @@
  */
 
 export const NAV_LINKS = [
-  { label: "Tool", href: "/tool" },
+  { label: "Tool", href: "#" },
   { label: "Pricing", href: "/pricing" },
   { label: "FAQ", href: "/faq" },
   { label: "Contact", href: "/contact" },
