@@ -25,8 +25,10 @@ const SECTIONS = [
   {
     title: "Your Text Stays With You",
     body: [
-      "The plagiarism remover, text paraphraser, and AI content humanizer are designed to process text locally in your browser. We do not upload, store, or share the text you paste into these tools.",
-      "Your content is never saved on our servers, and we cannot read, sell, or use the text you transform.",
+      "The plagiarism remover is designed to process text locally in your browser. We do not upload, store, or share the text you paste into it. Guests can transform up to 700 words; signed-in accounts are unlimited.",
+      "The detection tools (plagiarism checker, AI text detector, and AI image detector) require a free account. When you run them, your text or image is sent securely to our server and passed to Google's Gemini API for analysis. It is used only to produce your result — we do not store, log, or share it afterwards.",
+      "Pro users can also upload documents (PDF, DOCX, DOC, TXT) for checking or transformation. Uploaded files are processed in memory to extract and transform their text, then discarded — we never store the files or their contents.",
+      "Your content is never saved on our servers, and we cannot read, sell, or use the content you analyze or transform.",
     ],
   },
   {
@@ -48,6 +50,7 @@ const SECTIONS = [
     body: [
       "We use trusted third-party services to run parts of our website:",
       "• Clerk provides authentication and, when enabled, billing/payment processing. Their handling of your data is governed by their own privacy policy.",
+      "• Google (Gemini API) processes the text and images you submit to the detection tools to generate your analysis results. Their handling of your data is governed by Google's terms and privacy policy.",
       "• We do not share the text you transform with any third party.",
     ],
   },

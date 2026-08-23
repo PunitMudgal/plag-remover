@@ -8,7 +8,9 @@
  */
 
 import {
+  AiBrain01Icon,
   AiEraserIcon,
+  AiImageIcon,
   AiScanIcon,
   AiUserIcon,
   QuillWrite01Icon,
@@ -41,6 +43,22 @@ export const TOOLS = [
     icon: AiScanIcon,
     iconClass: "bg-rose-50 text-rose-600",
     cardClass: "hover:border-rose-100 hover:bg-rose-50/60",
+  },
+  {
+    label: "AI Text Detector",
+    href: "/ai-text-detector",
+    description: "See what percentage of any text was written by AI.",
+    icon: AiBrain01Icon,
+    iconClass: "bg-sky-50 text-sky-600",
+    cardClass: "hover:border-sky-100 hover:bg-sky-50/60",
+  },
+  {
+    label: "AI Image Detector",
+    href: "/ai-image-detector",
+    description: "Check the probability that an image is AI-generated.",
+    icon: AiImageIcon,
+    iconClass: "bg-indigo-50 text-indigo-600",
+    cardClass: "hover:border-indigo-100 hover:bg-indigo-50/60",
   },
   {
     label: "AI to Human Converter",
