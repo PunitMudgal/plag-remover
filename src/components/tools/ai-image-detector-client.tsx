@@ -32,11 +32,17 @@ const VERDICTS: Record<Verdict, { label: string; tone: VerdictTone }> = {
 
 type ImageAnalysis = {
   aiProbability: number;
-  verdict: Verdict;
+  verdict: keyof typeof VERDICTS;
   confidence: "low" | "medium" | "high";
   summary: string;
   possibleGenerator: string | null;
-  signals: { name: string; detail: string; severity: "low" | "medium" | "high"; pointsTo: "ai" | "human" }[];
+  signals: {
+    name: string;
+    detail: string;
+    severity: "low" | "medium" | "high";
+    pointsTo: "ai" | "human";
+    kind?: "visual" | "metadata";
+  }[];
 };
 
 export function AiImageDetectorClient() {
@@ -177,7 +183,9 @@ export function AiImageDetectorClient() {
                     <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold text-slate-800">
                         {signal.name}
-                        <span className="ml-2 font-normal text-xs text-slate-400">{signal.severity} impact</span>
+                        <span className="ml-2 font-normal text-xs text-slate-400">
+                          {signal.kind === "metadata" ? "file metadata · " : ""}{signal.severity} impact
+                        </span>
                       </p>
                       <p className="mt-1 text-sm leading-6 text-slate-500">{signal.detail}</p>
                     </div>
