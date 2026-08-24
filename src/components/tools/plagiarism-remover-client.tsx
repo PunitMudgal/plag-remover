@@ -24,6 +24,14 @@ const DOC_LOADING_MESSAGES = [
   "Rebuilding your file",
 ] as const;
 
+const TEXT_LOADING_MESSAGES = [
+  "Scanning your text",
+  "Embedding invisible markers into every word",
+] as const;
+
+/** How long the text-mode scan flourish runs before revealing the result. */
+const TEXT_SCAN_MS = 1100;
+
 function CopyIcon() {
   return (
     <svg aria-hidden="true" className="size-4" fill="none" viewBox="0 0 24 24">
@@ -53,6 +61,7 @@ export function PlagiarismRemoverClient() {
   const [text, setText] = useState("");
   const [encodedText, setEncodedText] = useState("");
   const [copied, setCopied] = useState(false);
+  const [processing, setProcessing] = useState(false);
 
   const [docFile, setDocFile] = useState<File | null>(null);
   const [docStatus, setDocStatus] = useState<"idle" | "processing" | "error">("idle");
@@ -73,11 +82,16 @@ export function PlagiarismRemoverClient() {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const trimmed = text.trim();
-    if (!trimmed || overGuestLimit) {
+    if (!trimmed || overGuestLimit || processing) {
       setEncodedText("");
       return;
     }
-    setEncodedText(insertInvisibleMarkers(trimmed));
+    setEncodedText("");
+    setProcessing(true);
+    window.setTimeout(() => {
+      setEncodedText(insertInvisibleMarkers(trimmed));
+      setProcessing(false);
+    }, TEXT_SCAN_MS);
   };
 
   const handleCopy = async () => {
@@ -190,10 +204,19 @@ export function PlagiarismRemoverClient() {
               <Button
                 type="submit"
                 size="sm"
-                disabled={!text.trim()}
+                disabled={!text.trim() || processing}
                 className="rounded-xl bg-emerald-600 px-4 text-white shadow-md shadow-emerald-600/20 hover:bg-emerald-700"
               >
-                Transform <span aria-hidden="true">→</span>
+                {processing ? (
+                  <>
+                    <span className="size-3.5 animate-spin rounded-full border-2 border-white/40 border-t-white" aria-hidden="true" />
+                    Transforming…
+                  </>
+                ) : (
+                  <>
+                    Transform <span aria-hidden="true">→</span>
+                  </>
+                )}
               </Button>
             )}
           </TextInputCard>
@@ -204,21 +227,31 @@ export function PlagiarismRemoverClient() {
             </p>
           ) : null}
 
-          <div className="overflow-hidden rounded-3xl border border-emerald-100 bg-slate-950 shadow-xl shadow-emerald-950/10">
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-              <div>
-                <p className="text-sm font-semibold text-white">Transformed text</p>
-                <p className="mt-0.5 text-xs text-slate-400">{encodedText ? "Ready to copy" : "Your result will appear here"}</p>
+          {processing ? (
+            <LoadingCard
+              active
+              accent="emerald"
+              intervalMs={450}
+              title="Transforming your text"
+              messages={TEXT_LOADING_MESSAGES}
+            />
+          ) : (
+            <div className="overflow-hidden rounded-3xl border border-emerald-100 bg-slate-950 shadow-xl shadow-emerald-950/10">
+              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+                <div>
+                  <p className="text-sm font-semibold text-white">Transformed text</p>
+                  <p className="mt-0.5 text-xs text-slate-400">{encodedText ? "Ready to copy" : "Your result will appear here"}</p>
+                </div>
+                <Button type="button" variant="secondary" size="sm" disabled={!encodedText} onClick={handleCopy} className="rounded-xl bg-white/10 text-white hover:bg-white/20">
+                  {copied ? <CheckIcon /> : <CopyIcon />}
+                  {copied ? "Copied" : "Copy"}
+                </Button>
               </div>
-              <Button type="button" variant="secondary" size="sm" disabled={!encodedText} onClick={handleCopy} className="rounded-xl bg-white/10 text-white hover:bg-white/20">
-                {copied ? <CheckIcon /> : <CopyIcon />}
-                {copied ? "Copied" : "Copy"}
-              </Button>
+              <div aria-live="polite" className="min-h-48 whitespace-pre-wrap wrap-break-word px-5 py-4 text-[15px] leading-7 text-slate-300">
+                {encodedText || <span className="text-slate-600">Transform your text to see the invisible characters at work.</span>}
+              </div>
             </div>
-            <div aria-live="polite" className="min-h-48 whitespace-pre-wrap wrap-break-word px-5 py-4 text-[15px] leading-7 text-slate-300">
-              {encodedText || <span className="text-slate-600">Transform your text to see the invisible characters at work.</span>}
-            </div>
-          </div>
+          )}
         </form>
       ) : canUploadDocs ? (
         <div className="grid gap-4">
@@ -260,7 +293,7 @@ export function PlagiarismRemoverClient() {
           </div>
 
           {docStatus === "processing" ? (
-            <LoadingCard active title="Transforming your document" messages={DOC_LOADING_MESSAGES} />
+            <LoadingCard active accent="emerald" title="Transforming your document" messages={DOC_LOADING_MESSAGES} />
           ) : null}
 
           {docStatus === "error" && docError ? (

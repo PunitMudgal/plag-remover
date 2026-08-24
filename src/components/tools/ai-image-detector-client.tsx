@@ -129,7 +129,7 @@ export function AiImageDetectorClient() {
         </div>
 
         {status === "loading" ? (
-          <LoadingCard active title="Analyzing your image" messages={LOADING_MESSAGES} />
+          <LoadingCard active accent="indigo" variant="image" title="Analyzing your image" messages={LOADING_MESSAGES} />
         ) : null}
 
         {status === "error" && error ? <ErrorCard message={error} onRetry={() => void runAnalysis()} /> : null}

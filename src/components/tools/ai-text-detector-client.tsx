@@ -146,7 +146,7 @@ export function AiTextDetectorClient() {
         </TextInputCard>
 
         {status === "loading" ? (
-          <LoadingCard active title="Analyzing your text" messages={LOADING_MESSAGES} />
+          <LoadingCard active accent="sky" title="Analyzing your text" messages={LOADING_MESSAGES} />
         ) : null}
 
         {status === "error" && error ? <ErrorCard message={error} onRetry={() => void runDetection()} /> : null}

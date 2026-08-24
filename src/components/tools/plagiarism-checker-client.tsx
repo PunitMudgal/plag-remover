@@ -297,6 +297,7 @@ export function PlagiarismCheckerClient() {
         <div className="mt-4">
           <LoadingCard
             active
+            accent="rose"
             title={mode === "document" ? "Scanning your document" : "Scanning the web"}
             messages={mode === "document" ? DOC_LOADING_MESSAGES : LOADING_MESSAGES}
           />
