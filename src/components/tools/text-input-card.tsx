@@ -46,7 +46,7 @@ export function TextInputCard({
     <span>
       {wordCount} {wordCount === 1 ? "word" : "words"}
       {minWords && wordCount > 0 && wordCount < minWords ? (
-        <span className="text-slate-300"> · {minWords - wordCount} more to scan</span>
+        <span className="text-slate-300"> · {minWords - wordCount} more needed</span>
       ) : null}
     </span>
   );

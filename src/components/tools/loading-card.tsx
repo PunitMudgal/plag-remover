@@ -6,7 +6,7 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-type AccentKey = "violet" | "rose" | "sky" | "indigo" | "emerald";
+type AccentKey = "violet" | "rose" | "sky" | "indigo" | "emerald" | "amber";
 
 const ACCENTS: Record<AccentKey, { line: string; glow: string; bracket: string }> = {
   violet: { line: "via-violet-400", glow: "via-violet-400/10", bracket: "border-violet-400/50" },
@@ -14,6 +14,7 @@ const ACCENTS: Record<AccentKey, { line: string; glow: string; bracket: string }
   sky: { line: "via-sky-400", glow: "via-sky-400/10", bracket: "border-sky-400/50" },
   indigo: { line: "via-indigo-400", glow: "via-indigo-400/10", bracket: "border-indigo-400/50" },
   emerald: { line: "via-emerald-400", glow: "via-emerald-400/10", bracket: "border-emerald-400/50" },
+  amber: { line: "via-amber-400", glow: "via-amber-400/10", bracket: "border-amber-400/50" },
 };
 
 /**
