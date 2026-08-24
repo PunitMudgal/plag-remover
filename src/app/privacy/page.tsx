@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - Fuck Plagiarism",
+  title: "Privacy Policy",
   description:
     "How Fuck Plagiarism handles your data when you use our plagiarism remover, text paraphraser, and AI content humanizer.",
+  alternates: { canonical: "/privacy" },
 };
 
 const SECTIONS = [

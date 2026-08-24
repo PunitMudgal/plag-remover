@@ -1,7 +1,12 @@
-import React from "react";
+import type { Metadata } from "next";
 
-const page = () => {
-  return <div>page</div>;
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with the Fuck Plagiarism team — questions, feedback, support, and partnership inquiries.",
+  alternates: { canonical: "/contact" },
 };
 
-export default page;
+export default function ContactPage() {
+  return <div>page</div>;
+}

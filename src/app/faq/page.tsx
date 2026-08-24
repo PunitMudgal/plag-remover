@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "FAQ - Fuck Plagiarism",
+  title: "FAQ",
   description:
     "Frequently asked questions about the Fuck Plagiarism plagiarism remover, text paraphraser, and AI content humanizer.",
+  alternates: { canonical: "/faq" },
 };
 
 const FAQS = [
@@ -44,8 +45,19 @@ const FAQS = [
   },
 ];
 export default function FaqPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQS.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: { "@type": "Answer", text: faq.answer },
+    })),
+  };
+
   return (
     <main className="bg-white text-slate-950">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <div className="mx-auto w-full max-w-2xl px-5 py-16 sm:px-8 sm:py-20">
         {/* Header */}
         <header className="border-b border-slate-200 pb-8 text-center">

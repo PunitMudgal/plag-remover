@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ClerkProvider } from "@clerk/nextjs";
 import Navbar from "@/components/navbar";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
 
 const figtree = Figtree({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -18,8 +19,51 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Fuck Plagiarism - Plagiarism Remover",
-  description: "Remove plagiarism from your text",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — Remove Plagiarism, Detect AI Text & Images`,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "plagiarism remover",
+    "plagiarism checker",
+    "AI text detector",
+    "AI image detector",
+    "AI content detection",
+    "humanize AI text",
+    "remove plagiarism from document",
+    "check plagiarism online free",
+  ],
+  authors: [{ name: SITE_NAME }],
+  category: "technology",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — Remove Plagiarism, Detect AI Text & Images`,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Remove Plagiarism, Detect AI Text & Images`,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
